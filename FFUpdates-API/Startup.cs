@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FFUpdates_API.Repositories.Team;
+using FFUpdates_API.Repositories;
 
 namespace FFUpdates_API
 {
@@ -30,6 +30,7 @@ namespace FFUpdates_API
 
             services.AddControllers();
             services.AddTransient<ITeamRepository, TeamRepository>();
+            services.AddTransient<IPlayerRepository, PlayerRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FFUpdates_API", Version = "v1" });

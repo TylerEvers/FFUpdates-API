@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FFUpdates_API.Models;
 
-namespace FFUpdates_API.Repositories.Team
+namespace FFUpdates_API.Repositories
 {
     public interface ITeamRepository
     {

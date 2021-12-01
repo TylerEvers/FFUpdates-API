@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FFUpdates_API.Repositories.Team
+namespace FFUpdates_API.Repositories
 {
     public class TeamRepository :BaseRepository, ITeamRepository
     {

@@ -1,4 +1,4 @@
-﻿using FFUpdates_API.Repositories.Team;
+﻿using FFUpdates_API.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
