@@ -8,12 +8,16 @@ namespace FFUpdates_API.Repositories
 {
     public interface ITeamRepository
     {
-        Task<List<Models.Team>> Get();
+        Task<List<Team>> Get();
 
-        Task<Models.Team> GetById(int id);
+        Task<Team> GetById(int id);
 
-        Task<List<Models.Team>> GetFantasyTeams();
+        Task<List<Team>> GetFantasyTeams();
 
-        Task<List<Models.Team>> GetNFLTeams();
+        Task<List<Team>> GetNFLTeams();
+
+        Task<int> AddTeam(Team newTeam);
+
+        Task<int> DeleteTeam(int id);
     }
 }

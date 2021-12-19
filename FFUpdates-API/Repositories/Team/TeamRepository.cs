@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using FFUpdates_API.Models;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -18,40 +19,59 @@ namespace FFUpdates_API.Repositories
             this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public async Task<List<Models.Team>> Get()
+        public async Task<List<Team>> Get()
         {
 
             string query = @$"SELECT ID, Name, TeamType, DynamoID
                             FROM Teams";
 
-            return db.Query<Models.Team>(query).ToList();
+            return db.Query<Team>(query).ToList();
         }
 
-        public async Task<Models.Team> GetById(int id)
+        public async Task<Team> GetById(int id)
         {
             string query = @$"SELECT ID, Name, TeamType, DynamoID
                             FROM Teams
                             WHERE ID = {id}";
 
-            return db.Query<Models.Team>(query).First();
+            return db.Query<Team>(query).First();
         }
 
-        public async Task<List<Models.Team>> GetFantasyTeams()
+        public async Task<List<Team>> GetFantasyTeams()
         {
             string query = @$"SELECT ID, Name, TeamType, DynamoID
                             FROM Teams
                             WHERE TeamType = 0";
 
-            return db.Query<Models.Team>(query).ToList();
+            return db.Query<Team>(query).ToList();
         }
 
-        public async Task<List<Models.Team>> GetNFLTeams()
+        public async Task<List<Team>> GetNFLTeams()
         {
             string query = @$"SELECT ID, Name, TeamType, DynamoID
                             FROM Teams
                             WHERE TeamType = 1";
 
-            return db.Query<Models.Team>(query).ToList();
+            return db.Query<Team>(query).ToList();
+        }
+
+        public async Task<int> AddTeam(Team newTeam)
+        {
+            string query = @$"INSERT INTO Teams 
+                            VALUES('{newTeam.Name}',
+                                    {newTeam.TeamType},
+                                    {newTeam.DynamoID})";
+
+            return db.Execute(query);
+        }
+
+        public async Task<int> DeleteTeam(int id)
+        {
+            string query = @$"DELETE
+                            FROM Teams 
+                            WHERE ID = {id}";
+
+            return db.Execute(query);
         }
     }
 }

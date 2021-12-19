@@ -53,25 +53,28 @@ namespace FFUpdates_API.Controllers
             return Ok(team);
         }
 
-        //// POST api/<TeamController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //    //TODO: insert
-        //}
-        //
-        //// PUT api/<TeamController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //    //TODO: update
-        //}
-        //
-        //// DELETE api/<TeamController>/5
+        // POST api/<TeamController>
+        [HttpPost]
+        public async Task<ActionResult<int>> Post([FromBody] Team body)
+        {
+            var status = await _teamRepository.AddTeam(body);
+            return Ok(status);
+        }
+        
+        // PUT api/<TeamController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string json)
+        {
+            
+        }
+        
+        //Commenting out, don't want functionality in end product currently
+        // DELETE api/<TeamController>/5
         //[HttpDelete("{id}")]
-        //public void Delete(int id)
+        //public async Task<ActionResult<int>> Delete(int id)
         //{
-        //    //TODO: remove delete?
+        //    var status = await _teamRepository.DeleteTeam(id);
+        //    return Ok(status);
         //}
     }
 }
