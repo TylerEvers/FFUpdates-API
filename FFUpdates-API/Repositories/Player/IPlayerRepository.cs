@@ -8,5 +8,10 @@ namespace FFUpdates_API.Repositories
     {
         Task<List<Player>> Get();
 
+        Task<Player> GetById(int id);
+
+        Task<int> AddPlayer(Player newPlayer);
+
+        Task<int> DeletePlayer(int id);
     }
 }

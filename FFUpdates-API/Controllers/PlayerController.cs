@@ -24,5 +24,28 @@ namespace FFUpdates_API.Controllers
             var players = await _playerRepository.Get();
             return Ok(players);
         }
+
+        // GET api/<TeamController>/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Player>> GetById(int id)
+        {
+            var player = await _playerRepository.GetById(id);
+            return Ok(player);
+        }
+
+        // POST api/<TeamController>
+        [HttpPost("AddPlayer")]
+        public async Task<ActionResult<int>> Post([FromBody] Player body)
+        {
+            var status = await _playerRepository.AddPlayer(body);
+            return Ok(status);
+        }
+
+        // PUT api/<TeamController>/5
+        [HttpPut("UpdatePlayer/{id}")]
+        public void Put(int id, [FromBody] Player body)
+        {
+
+        }
     }
 }

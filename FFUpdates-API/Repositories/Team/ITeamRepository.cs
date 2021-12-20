@@ -13,5 +13,9 @@ namespace FFUpdates_API.Repositories
         Task<List<Team>> GetFantasyTeams();
 
         Task<List<Team>> GetNFLTeams();
+
+        Task<int> AddTeam(Team newTeam);
+
+        Task<int> DeleteTeam(int id);
     }
 }
