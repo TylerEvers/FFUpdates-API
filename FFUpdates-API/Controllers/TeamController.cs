@@ -22,7 +22,7 @@ namespace FFUpdates_API.Controllers
         }
 
         // GET: api/<TeamController>
-        [HttpGet]
+        [HttpGet()]
         public async Task<ActionResult<List<Team>>> Get()
         {
             var teams = await _teamRepository.Get();
@@ -54,7 +54,7 @@ namespace FFUpdates_API.Controllers
         }
 
         // POST api/<TeamController>
-        [HttpPost]
+        [HttpPost("AddTeam")]
         public async Task<ActionResult<int>> Post([FromBody] Team body)
         {
             var status = await _teamRepository.AddTeam(body);
@@ -62,8 +62,8 @@ namespace FFUpdates_API.Controllers
         }
         
         // PUT api/<TeamController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string json)
+        [HttpPut("UpdateTeam/{id}")]
+        public void Put(int id, [FromBody] Team body)
         {
             
         }
