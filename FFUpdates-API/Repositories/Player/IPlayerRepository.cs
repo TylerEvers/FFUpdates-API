@@ -7,6 +7,6 @@ namespace FFUpdates_API.Repositories
     public interface IPlayerRepository
     {
         Task<List<Player>> Get();
-
+        Task<Player> GetById(int id);
     }
 }

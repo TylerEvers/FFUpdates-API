@@ -17,12 +17,20 @@ namespace FFUpdates_API.Controllers
             _playerRepository = playerRepository;
         }
 
-        // GET: api/<TeamController>
+        // GET: api/<PlayerController>
         [HttpGet]
         public async Task<ActionResult<List<Player>>> Get()
         {
             var players = await _playerRepository.Get();
             return Ok(players);
+        }
+
+        // GET: api/<PlayerController>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Player>> GetById(int id)
+        {
+            var player = await _playerRepository.GetById(id);
+            return Ok(player);
         }
     }
 }

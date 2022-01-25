@@ -19,11 +19,20 @@ namespace FFUpdates_API.Repositories
 
         public async Task<List<Models.Player>> Get()
         {
-
-            string query = @$"SELECT ID, PlayerName, Number, Team, Watched, capSpace, contractThrough, Position, PlayerStatus, TeamID, RookieYear, BirthDate, CollegeId, DraftPick, PlayerImage
-                            FROM Player";
+            string query = @$"SELECT ID, PlayerName, Position, Team, BirthDate, DraftYear, DraftPick
+                            FROM Players";
 
             return db.Query<Models.Player>(query).ToList();
+        }
+
+
+        public async Task<Models.Player> GetById(int id)
+        {
+            string query = @$"SELECT ID, PlayerName, Position, Team, BirthDate, DraftYear, DraftPick
+                            FROM Players
+                            WHERE ID = {id}";
+
+            return db.Query<Models.Player>(query).First();
         }
     }
 }
