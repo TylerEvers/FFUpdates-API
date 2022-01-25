@@ -6,18 +6,10 @@ namespace FFUpdates_API.Models
     {
         public int ID { get; set; }
         public string PlayerName { get; set; }
-        public int? Number { get; set; }
-        public int Team { get; set; }
-        public int Watched { get; set; }
-        public int? CapSpace { get; set; }
-        public int? ContractThrough { get; set; }
         public string Position { get; set; }
-        public int PlayerStatus { get; set; }
-        public int TeamID { get; set; }
-        public int RookieYear { get; set; }
+        public string Team { get; set; }
         public DateTime Birthdate { get; set; }
-        public int CollegeID { get; set; }
+        public int DraftYear { get; set; }
         public string DraftPick { get; set; }
-        public string PlayerImage { get; set; }
     }
 }

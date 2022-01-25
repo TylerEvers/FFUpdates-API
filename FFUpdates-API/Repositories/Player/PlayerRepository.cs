@@ -20,50 +20,20 @@ namespace FFUpdates_API.Repositories
 
         public async Task<List<Player>> Get()
         {
-
-            string query = @$"SELECT ID, PlayerName, Number, Team, Watched, capSpace, contractThrough, Position, PlayerStatus, TeamID, RookieYear, BirthDate, CollegeId, DraftPick, PlayerImage
+            string query = @$"SELECT ID, PlayerName, Position, Team, BirthDate, DraftYear, DraftPick
                             FROM Players";
 
             return db.Query<Models.Player>(query).ToList();
         }
 
-        public async Task<Player> GetById(int id)
+
+        public async Task<Models.Player> GetById(int id)
         {
-            string query = @$"SELECT ID, PlayerName, Number, Team, Watched, capSpace, contractThrough, Position, PlayerStatus, TeamID, RookieYear, BirthDate, CollegeId, DraftPick, PlayerImage
+            string query = @$"SELECT ID, PlayerName, Position, Team, BirthDate, DraftYear, DraftPick
                             FROM Players
                             WHERE ID = {id}";
 
-            return db.Query<Player>(query).First();
-        }
-
-        public async Task<int> AddPlayer(Player newPlayer)
-        {
-            string query = @$"INSERT INTO Players
-                            VALUES('{newPlayer.PlayerName}',
-                                    {newPlayer.Number},
-                                    {newPlayer.Team},
-                                    {newPlayer.Watched},
-                                    {newPlayer.CapSpace},
-                                    {newPlayer.ContractThrough},
-                                    {newPlayer.Position},
-                                    {newPlayer.PlayerStatus},
-                                    {newPlayer.TeamID},
-                                    {newPlayer.RookieYear},
-                                    {newPlayer.Birthdate},
-                                    {newPlayer.CollegeID},
-                                    {newPlayer.DraftPick},
-                                    {newPlayer.PlayerImage})";
-
-            return db.Execute(query);
-        }
-
-        public async Task<int> DeletePlayer(int id)
-        {
-            string query = @$"DELETE
-                            FROM Players 
-                            WHERE ID = {id}";
-
-            return db.Execute(query);
+            return db.Query<Models.Player>(query).First();
         }
     }
 }
