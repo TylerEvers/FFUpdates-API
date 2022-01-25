@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using FFUpdates_API.Models;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +18,7 @@ namespace FFUpdates_API.Repositories
             this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public async Task<List<Models.Player>> Get()
+        public async Task<List<Player>> Get()
         {
             string query = @$"SELECT ID, PlayerName, Position, Team, BirthDate, DraftYear, DraftPick
                             FROM Players";
